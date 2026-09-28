@@ -22,8 +22,13 @@
 - Access control (management / keeper / emergency)
 - Emergency withdraw path
 
-It is audited upstream. Verify rather than re-audit: compare the deployed bytecode at
-`0.0.10757286` against a local build of `yearn/tokenized-strategy` at the pinned commit.
+It is audited upstream. Verify rather than re-audit: build `lib/tokenized-strategy` at the
+pinned submodule commit and compare against the deployed bytecode at `0.0.10757286`.
+
+**Reproducibility confirmed.** `TokenizedStrategy.sol` at the pinned commit
+`8c8929f1878e8c5ad78aa0a6dabc877a890f68d9` is byte-identical to the source deployed
+(sha256 `1023633f187e02b286c1d82a2c9ff1921395ec5109c7fec983ebb4294b759924`, 2,372 lines,
+`API_VERSION = "3.1.0"`), and the live contract reports `apiVersion() = "3.1.0"`.
 
 ## Architecture
 
