@@ -1,0 +1,51 @@
+{
+ "network": "hedera-testnet",
+ "chainId": 296,
+ "explorer": "https://hashscan.io/testnet",
+ "deployer": {
+  "evm": "0x2A7e11875115bc5A0d82f3357A0EE2fD032192F3",
+  "hedera": "0.0.10749369"
+ },
+ "audited_core": {
+  "TokenizedStrategy": {
+   "evm": "0xccC8Ee9a1A559Fa814a886A2303F03239678eC8e",
+   "hedera": "0.0.10757286",
+   "tx": "0x7e912c0be42ce0653a7d5a5adb6cc138a0e2e577048715040007bef11bc19d8a",
+   "source": "yearn/tokenized-strategy @ master, deployed VERBATIM",
+   "apiVersion": "3.1.0",
+   "audited": true,
+   "note": "Holds all ERC-4626 accounting, share maths, fees, access control, emergency path."
+  },
+  "MinimalFactory": {
+   "evm": "0xdb5A2cf26E6d0956330bF507441Aaa59D5aB742c",
+   "hedera": "0.0.10757284",
+   "audited": false,
+   "note": "20-line fee-config source; TokenizedStrategy only calls protocol_fee_config(). Returns (0, deployer)."
+  }
+ },
+ "custom": {
+  "HbarxLoopStrategy": {
+   "evm": "0xcA41b1679961Eb0C4644ab0004Fce2B805d062dB",
+   "hedera": "0.0.10757461",
+   "tx": "0xdbfea7a5fb597094ff6714e620579bc6eee833a7165151f6eab612e58b5f424c",
+   "status": "deployed; ERC-4626 interface verified working through delegatecall to the audited singleton",
+   "custom_lines": 155,
+   "runtime_bytes": 7937,
+   "audited": false,
+   "vault_symbol": "ysHBARX",
+   "apiVersion": "3.1.0",
+   "pending": "initApprovals() - blocked until the contract receives its first HTS token (association)"
+  }
+ },
+ "superseded": {
+  "HederaLoopVault_v1": {
+   "evm": "0x48bf2Ff0842D09FdFa4aC1A4E708Ad85dF214Db6",
+   "hedera": "0.0.10749402",
+   "note": "fully custom, 600 lines, unaudited"
+  },
+  "Prober": {
+   "evm": "0x100c27ff9c338E06cDbbaaAcecf66021AD72628d",
+   "hedera": "0.0.10749437"
+  }
+ }
+}

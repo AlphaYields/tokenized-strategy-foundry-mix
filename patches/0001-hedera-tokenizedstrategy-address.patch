@@ -1,0 +1,24 @@
+From: AlphaYields <engineering@alphayields.io>
+Subject: [PATCH] Point BaseStrategy at the Hedera TokenizedStrategy deployment
+
+Yearn has no canonical TokenizedStrategy deployment on Hedera, so the singleton
+was deployed from unmodified upstream source (apiVersion 3.1.0) at
+
+    0xccC8Ee9a1A559Fa814a886A2303F03239678eC8e   (Hedera 0.0.10757286)
+
+BaseStrategy hardcodes that address as a constant, so it must be repointed. This
+is the ONLY modification to upstream Yearn code and it changes no logic.
+
+Apply with:
+    git apply -p1 --directory=lib/tokenized-strategy patches/0001-hedera-tokenizedstrategy-address.patch
+
+--- a/src/BaseStrategy.sol
++++ b/src/BaseStrategy.sol
+@@ -110,7 +110,7 @@
+     // NOTE: This is a holder address based on expected deterministic location for testing
+     address public constant tokenizedStrategyAddress =
+-        0x2e234DAe75C793f67A35089C9d99245E1C58470b;
++        0xccC8Ee9a1A559Fa814a886A2303F03239678eC8e;
+ 
+     /*//////////////////////////////////////////////////////////////
+                             IMMUTABLES
